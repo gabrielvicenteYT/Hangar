@@ -316,9 +316,9 @@ export default {
         },
         toggleFocus(platformKey, depName, showDropdown) {
             if (showDropdown) {
-                $(`#${platformKey}-${depName}-project-dropdown`).show();
+                document.querySelector(`#${platformKey}-${depName}-project-dropdown`).style.display = 'flex';
             } else {
-                $(`#${platformKey}-${depName}-project-dropdown`).hide();
+                document.querySelector(`#${platformKey}-${depName}-project-dropdown`).style.display = 'none';
             }
         },
         projectSearch(target, platformKey, depName) {
@@ -346,7 +346,7 @@ export default {
             }
         },
         selectProject(platformKey, depName, project) {
-            $(`#${platformKey}-${depName}-project-dropdown`).hide();
+            document.querySelector(`#${platformKey}-${depName}-project-dropdown`).style.display = 'none';
             const input = $(`#${platformKey}-${depName}-project-input`);
             let namespace = '';
             if (project.namespace) {

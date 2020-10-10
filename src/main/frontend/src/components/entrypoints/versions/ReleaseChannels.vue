@@ -104,7 +104,7 @@ export default {
                 $('#version-count-on-delete').text(versionCount);
                 $('#modal-delete').modal('show');
             } else {
-                $('#delete-form').submit();
+                document.getElementById('delete-form').submit();
             }
         },
         editFinal(state) {

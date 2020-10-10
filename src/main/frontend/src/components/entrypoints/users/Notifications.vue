@@ -128,11 +128,9 @@
 </template>
 
 <script>
-import $ from 'jquery';
 import axios from 'axios';
 import { chunk, remove } from 'lodash-es';
 import UserAvatar from '@/components/UserAvatar';
-
 export default {
     name: 'Notifications',
     components: {
@@ -159,8 +157,8 @@ export default {
         };
     },
     mounted() {
-        const invites = $('.invite-content');
-        invites.css('height', invites.width());
+        const invites = document.querySelector('.invite-content');
+        invites.style.height = invites.offsetWidth;
     },
     methods: {
         avatarUrl(username) {
