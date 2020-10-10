@@ -93,6 +93,10 @@ function removeClass(element, style) {
         el.classList.remove(style);
     });
 }
+function addClass(elemento, style) {
+    var element = document.querySelector(elemento);
+    element.classList.add(style);
+}
 
 export default {
     name: 'NewChannel',
@@ -153,10 +157,10 @@ export default {
         finalizeChannel() {
             removeClass('.invalid-input', 'invalid-input');
             if (!this.name || this.name.trim().length === 0 || !/^[a-zA-Z0-9]+$/.test(this.name) || this.name.length > this.maxChannelNameLen) {
-                $('#channel-input').addClass('invalid-input');
+                addClass('#channel-input', 'invalid-input');
                 return;
             } else if (!this.color.hex || !/^#[0-9a-f]{6}$/i.test(this.color.hex)) {
-                $('#color-popover-open').addClass('invalid-input');
+                addClass('#color-popover-open', 'invalid-input');
                 return;
             }
             this.$emit('channel-created', this.edit ? 'EDIT' : 'NEW');
