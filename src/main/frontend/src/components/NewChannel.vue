@@ -82,6 +82,18 @@ for (let i = 0; i < window.COLORS.length; i += 4) {
     colors2dArray.push(window.COLORS.slice(i, i + 4));
 }
 
+function removeElement(elementId) {
+    // Removes an element from the document
+    var element = document.querySelector(elementId);
+    element.parentNode.removeChild(element);
+}
+function removeClass(element, style) {
+    var aelement = document.querySelectorAll(element);
+    [].forEach.call(aelement, function (el) {
+        el.classList.remove(style);
+    });
+}
+
 export default {
     name: 'NewChannel',
     components: {
@@ -139,7 +151,7 @@ export default {
             this.showPopover = false;
         },
         finalizeChannel() {
-            $('.invalid-input').removeClass('invalid-input');
+            removeClass('.invalid-input', 'invalid-input');
             if (!this.name || this.name.trim().length === 0 || !/^[a-zA-Z0-9]+$/.test(this.name) || this.name.length > this.maxChannelNameLen) {
                 $('#channel-input').addClass('invalid-input');
                 return;
@@ -149,8 +161,8 @@ export default {
             }
             this.$emit('channel-created', this.edit ? 'EDIT' : 'NEW');
             $('#channel-settings').modal('hide');
-            $(document.body).removeClass('modal-open');
-            $('.modal-backdrop').remove();
+            removeClass('body', 'modal-open');
+            removeElement('.modal-backdrop');
         },
     },
 };
