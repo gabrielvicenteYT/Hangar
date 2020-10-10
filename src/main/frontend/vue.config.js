@@ -3,6 +3,7 @@ const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin');
 
 const sourceDir = path.resolve(__dirname, 'src');
 const entryDir = path.resolve(sourceDir, 'entrypoints');
@@ -38,6 +39,7 @@ module.exports = {
                         },
                     },
                 }),
+                new HtmlMinimizerPlugin(),
             ],
             splitChunks: {
                 cacheGroups: {
